@@ -1,4 +1,4 @@
-load KAM_Output.mat
+    load KAM_Output.mat
 load KAM_RawData.mat
 
 %% Take Inputs
@@ -166,6 +166,13 @@ end
 if cxl{1} == 'Y'
     KAM_Output = KAM_Output(1:numel(KAM_Output)-1);
 end
+
+KAM_Output(numel(KAM_Output)).Toe_In.KAM = KAM_Output(numel(KAM_Output)).Toe_In.KAM/1000;
+KAM_Output(numel(KAM_Output)).Toe_Out.KAM = KAM_Output(numel(KAM_Output)).Toe_Out.KAM/1000;
+KAM_Output(numel(KAM_Output)).Wider_Steps.KAM = KAM_Output(numel(KAM_Output)).Wider_Steps.KAM/1000;
+KAM_Output(numel(KAM_Output)).Ipsilateral_Trunk_Lean.KAM = KAM_Output(numel(KAM_Output)).Ipsilateral_Trunk_Lean.KAM/1000;
+KAM_Output(numel(KAM_Output)).Medial_Knee_Thrust.KAM = KAM_Output(numel(KAM_Output)).Medial_Knee_Thrust.KAM/1000;
+
 end
 
 % Cancel last input
@@ -191,7 +198,6 @@ clear('KAM_RawData')
 save KAM_Output.mat
 save KAM_RawData.mat
 
-
 %% Template for Extraction of data from participant with specific subject ID
 
-KAM_Output([KAM_Output.Subject] == "SXX").Field  % Replace 'field' with field to be extracted
+KAM_Output([KAM_Output.Subject] == "SXX").Field % Replace 'field' with field to be extracted
